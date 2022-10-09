@@ -45,21 +45,21 @@ if [ ${stage} -le 1 ] && [ ${stop_stage} -ge 1 ]; then
         data/${train_set} data/${train_dev} data/${recog_set} --fs ${fs}
 fi
 
-# if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
-#     log "stage 2: Prepare segments"
-#     for x in ${train_set} ${train_dev} ${recog_set}; do
-#         src_data=data/${x}
-#         local/prep_segments.py --silence pau --silence sil --silence br ${src_data} 10000 # in ms
-#         mv ${src_data}/segments.tmp ${src_data}/segments
-#         mv ${src_data}/label.tmp ${src_data}/label
-#         local/prep_segments_from_xml.py ${src_data} 10000 # in ms
-#         mv ${src_data}/text.tmp ${src_data}/text
-#         mv ${src_data}/segments_from_xml.tmp ${src_data}/segments_from_xml
-#         mv ${src_data}/xmlnote.tmp ${src_data}/xmlnote
-#         awk '{printf("%s natsum\n", $1);}' < ${src_data}/segments > ${src_data}/utt2spk
-#         utils/utt2spk_to_spk2utt.pl < ${src_data}/utt2spk > ${src_data}/spk2utt
-#         utils/fix_data_dir.sh --utt_extra_files label ${src_data}
-#     done
-# fi
+if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
+    log "stage 2: Prepare segments"
+    for x in ${train_set} ${train_dev} ${recog_set}; do
+        src_data=data/${x}
+        local/prep_segments.py --silence pau --silence sil --silence br ${src_data} 10000 # in ms
+        mv ${src_data}/segments.tmp ${src_data}/segments
+        mv ${src_data}/label.tmp ${src_data}/label
+        local/prep_segments_from_xml.py ${src_data} 10000 # in ms
+        mv ${src_data}/text.tmp ${src_data}/text
+        mv ${src_data}/segments_from_xml.tmp ${src_data}/segments_from_xml
+        mv ${src_data}/xmlnote.tmp ${src_data}/xmlnote
+        awk '{printf("%s natsum\n", $1);}' < ${src_data}/segments > ${src_data}/utt2spk
+        utils/utt2spk_to_spk2utt.pl < ${src_data}/utt2spk > ${src_data}/spk2utt
+        utils/fix_data_dir.sh --utt_extra_files label ${src_data}
+    done
+fi
 
-# log "Successfully finished. [elapsed=${SECONDS}s]"
+log "Successfully finished. [elapsed=${SECONDS}s]"
