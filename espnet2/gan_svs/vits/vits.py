@@ -185,6 +185,7 @@ class VITS(AbsGANSVS):
         lambda_feat_match: float = 2.0,
         lambda_dur: float = 1.0,
         lambda_kl: float = 1.0,
+        lambda_kl2: float = 1.0,
         lambda_pitch: float = 1.0,
         lambda_phoneme: float = 1.0,
         cache_generator_outputs: bool = True,
@@ -258,6 +259,7 @@ class VITS(AbsGANSVS):
         self.lambda_adv = lambda_adv
         self.lambda_mel = lambda_mel
         self.lambda_kl = lambda_kl
+        self.lambda_kl2 = lambda_kl2
         self.lambda_feat_match = lambda_feat_match
         self.lambda_dur = lambda_dur
         self.lambda_pitch = lambda_pitch
@@ -335,7 +337,7 @@ class VITS(AbsGANSVS):
                 value (LongTensor): Batch of padded beat (B, Tmax).
             beat_lengths (Optional[Dict]): key is "lab", "score_phn" or "score_syb";
                 value (LongTensor): Batch of the lengths of padded beat (B, ).
-            pitch (FloatTensor): Batch of padded f0 (B, Tmax).
+            pitch (FloatTensor): Batch of padded f0 (B, T_feats, 1).
             pitch_lengths (LongTensor): Batch of the lengths of padded f0 (B, ).
             duration (Optional[Dict]): key is "phn", "syb";
                 value (LongTensor): Batch of padded beat (B, Tmax).
@@ -514,11 +516,12 @@ class VITS(AbsGANSVS):
         else:
             if self.use_dp:
                 (
-                    _,
+                    z,
+                    z2,
                     z_p,
                     m_p,
                     logs_p,
-                    _,
+                    m_q,
                     logs_q,
                     pred_pitch,
                     gt_pitch,
@@ -544,6 +547,7 @@ class VITS(AbsGANSVS):
         with autocast(enabled=False):
             mel_loss = self.mel_loss(singing_hat_, singing_)
             kl_loss = self.kl_loss(z_p, logs_q, m_p, logs_p, z_mask)
+            kl_loss2 = self.kl_loss(z2, logs_p, m_q, logs_q, z_mask)
             adv_loss = self.generator_adv_loss(p_hat)
             feat_match_loss = self.feat_match_loss(p_hat, p)
 
@@ -557,6 +561,7 @@ class VITS(AbsGANSVS):
 
             mel_loss = mel_loss * self.lambda_mel
             kl_loss = kl_loss * self.lambda_kl
+            kl_loss2 = kl_loss2 * self.lambda_kl2
 
             adv_loss = adv_loss * self.lambda_adv
             feat_match_loss = feat_match_loss * self.lambda_feat_match
@@ -566,7 +571,7 @@ class VITS(AbsGANSVS):
                     ctc_loss = ctc_loss * self.lambda_phoneme
                     dur_loss = dur_loss * self.lambda_dur
 
-            loss = mel_loss + kl_loss + adv_loss + feat_match_loss
+            loss = mel_loss + kl_loss + kl_loss2 + adv_loss + feat_match_loss
             if self.use_visinger:
                 loss += pitch_loss
             if self.use_dp:
@@ -588,6 +593,7 @@ class VITS(AbsGANSVS):
                     generator_loss=loss.item(),
                     generator_mel_loss=mel_loss.item(),
                     generator_kl_loss=kl_loss.item(),
+                    generator_kl_loss2=kl_loss2.item(),
                     generator_dur_loss=dur_loss.item(),
                     generator_adv_loss=adv_loss.item(),
                     generator_feat_match_loss=feat_match_loss.item(),

@@ -445,6 +445,10 @@ class VITSGenerator(torch.nn.Module):
         # forward flow
         z_p = self.flow(z, y_mask, g=g)  # (B, H, T_feats)
 
+        # backward flow
+        z_p2 = m_p + torch.randn_like(m_p) * torch.exp(logs_p) * 1
+        z2 = self.flow(z_p2, x_mask, g=g, inverse=True)
+
         # get random segments
         z_segments, z_start_idxs = get_random_segments(
             z,
@@ -464,6 +468,7 @@ class VITSGenerator(torch.nn.Module):
                     y_mask,
                     (
                         z,
+                        z2,
                         z_p,
                         m_p,
                         logs_p,
@@ -535,7 +540,7 @@ class VITSGenerator(torch.nn.Module):
                 value (LongTensor): Batch of padded tempo (B, Tmax).
             beat (Optional[Dict]): key is "lab", "score_phn" or "score_syb";
                 value (LongTensor): Batch of padded beat (B, Tmax).
-            pitch (FloatTensor): Batch of padded f0 (B, Tmax).
+            pitch (FloatTensor): Batch of padded f0 (B, T_feats).
             sids (Optional[Tensor]): Speaker index tensor (B,) or (B, 1).
             spembs (Optional[Tensor]): Speaker embedding tensor (B, spk_embed_dim).
             lids (Optional[Tensor]): Language index tensor (B,) or (B, 1).

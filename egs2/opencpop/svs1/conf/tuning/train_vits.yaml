@@ -121,7 +121,8 @@ svs_conf:
     lambda_mel: 45.0       # loss scaling coefficient for Mel loss
     lambda_feat_match: 2.0 # loss scaling coefficient for feat match loss
     lambda_dur: 1.0        # loss scaling coefficient for duration loss
-    lambda_kl: 1.0         # loss scaling coefficient for KL divergence loss
+    lambda_kl: 1.0         # loss scaling coefficient for forward KL divergence loss
+    lambda_kl2: 1.0        # loss scaling coefficient for backward KL divergence loss
     # others
     sampling_rate: 22050          # needed in the inference for saving wav
     cache_generator_outputs: true # whether to cache generator outputs in the training
@@ -161,9 +162,9 @@ generator_first: false # whether to start updating generator first
 #                OTHER TRAINING SETTING                  #
 ##########################################################
 num_iters_per_epoch: 1000 # number of iterations per epoch
-max_epoch: 600            # number of epochs
+max_epoch: 100            # number of epochs
 accum_grad: 1             # gradient accumulation
-batch_bins: 500000        # batch bins (feats_type=raw)
+batch_bins: 1400000        # batch bins (feats_type=raw)
 batch_type: numel         # how to make batch
 grad_clip: -1             # gradient clipping norm
 grad_noise: false         # whether to use gradient noise injection
