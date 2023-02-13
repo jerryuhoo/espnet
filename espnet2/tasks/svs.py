@@ -296,7 +296,7 @@ class SVSTask(AbsTask):
         cls, train: bool = True, inference: bool = False
     ) -> Tuple[str, ...]:
         if not inference:
-            retval = ("spembs", "durations", "pitch", "energy", "sids", "lids")
+            retval = ("spembs", "durations", "pitch", "energy", "sids", "lids", "feats")
         else:
             # Inference mode
             retval = ("spembs", "singing", "pitch", "durations", "sids", "lids")
@@ -400,8 +400,7 @@ class SVSTask(AbsTask):
             score_feats_extract=score_feats_extract,
             label_extract=score_feats_extract,
             pitch_extract=pitch_extract,
-            tempo_extract=score_feats_extract,
-            beat_extract=score_feats_extract,
+            duration_extract=score_feats_extract,
             energy_extract=energy_extract,
             normalize=normalize,
             pitch_normalize=pitch_normalize,
@@ -420,7 +419,6 @@ class SVSTask(AbsTask):
         model: Optional[ESPnetSVSModel] = None,
         device: str = "cpu",
     ):
-
         logging.info(f"vocoder_config_file: {vocoder_config_file}")
         logging.info(f"vocoder_file: {vocoder_file}")
 
