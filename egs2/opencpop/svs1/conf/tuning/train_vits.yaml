@@ -131,7 +131,8 @@ svs_conf:
 pitch_extract: dio           # pitch extractor type
 pitch_extract_conf:
     use_token_averaged_f0: false
-pitch_normalize: global_mvn  # normalizer for the pitch feature
+    use_log_f0: false
+# pitch_normalize: global_mvn  # normalizer for the pitch feature
 
 ##########################################################
 #            OPTIMIZER & SCHEDULER SETTING               #
