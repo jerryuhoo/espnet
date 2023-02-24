@@ -4,50 +4,6 @@ espnet2.layers package
 
 
 
-.. _espnet2.layers.global_mvn:
-
-espnet2.layers.global_mvn
--------------------------
-
-.. automodule:: espnet2.layers.global_mvn
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-.. _espnet2.layers.label_aggregation:
-
-espnet2.layers.label_aggregation
---------------------------------
-
-.. automodule:: espnet2.layers.label_aggregation
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-.. _espnet2.layers.stft:
-
-espnet2.layers.stft
--------------------
-
-.. automodule:: espnet2.layers.stft
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-.. _espnet2.layers.mask_along_axis:
-
-espnet2.layers.mask_along_axis
-------------------------------
-
-.. automodule:: espnet2.layers.mask_along_axis
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 .. _espnet2.layers.utterance_mvn:
 
 espnet2.layers.utterance_mvn
@@ -59,12 +15,12 @@ espnet2.layers.utterance_mvn
     :show-inheritance:
 
 
-.. _espnet2.layers.inversible_interface:
+.. _espnet2.layers.global_mvn:
 
-espnet2.layers.inversible_interface
------------------------------------
+espnet2.layers.global_mvn
+-------------------------
 
-.. automodule:: espnet2.layers.inversible_interface
+.. automodule:: espnet2.layers.global_mvn
     :members:
     :undoc-members:
     :show-inheritance:
@@ -76,6 +32,17 @@ espnet2.layers.log_mel
 ----------------------
 
 .. automodule:: espnet2.layers.log_mel
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. _espnet2.layers.stft:
+
+espnet2.layers.stft
+-------------------
+
+.. automodule:: espnet2.layers.stft
     :members:
     :undoc-members:
     :show-inheritance:
@@ -103,6 +70,28 @@ espnet2.layers.time_warp
     :show-inheritance:
 
 
+.. _espnet2.layers.mask_along_axis:
+
+espnet2.layers.mask_along_axis
+------------------------------
+
+.. automodule:: espnet2.layers.mask_along_axis
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. _espnet2.layers.label_aggregation:
+
+espnet2.layers.label_aggregation
+--------------------------------
+
+.. automodule:: espnet2.layers.label_aggregation
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
 .. _espnet2.layers.sinc_conv:
 
 espnet2.layers.sinc_conv
@@ -120,6 +109,17 @@ espnet2.layers.abs_normalize
 ----------------------------
 
 .. automodule:: espnet2.layers.abs_normalize
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. _espnet2.layers.inversible_interface:
+
+espnet2.layers.inversible_interface
+-----------------------------------
+
+.. automodule:: espnet2.layers.inversible_interface
     :members:
     :undoc-members:
     :show-inheritance:
