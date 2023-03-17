@@ -11,11 +11,11 @@ requirements = {
         "setuptools>=38.5.1",
         "packaging",
         "configargparse>=1.2.1",
-        "typeguard>=2.7.0",
+        "typeguard==2.13.3",
         "humanfriendly",
         "scipy>=1.4.1",
         "filelock",
-        "librosa>=0.8.0",
+        "librosa==0.9.2",
         "jamo==0.4.1",  # For kss
         "PyYAML>=5.1.2",
         "soundfile>=0.10.2",
@@ -40,6 +40,8 @@ requirements = {
         "ci_sdr",
         "pytorch_wpe",
         "fast-bss-eval==0.1.3",
+        # UASR
+        "editdistance",
         # fix CI error due to the use of deprecated functions
         # https://github.com/espnet/espnet/actions/runs/3174416926/jobs/5171182884#step:8:8419
         # https://importlib-metadata.readthedocs.io/en/latest/history.html#v5-0-0
