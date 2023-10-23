@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ESPnet2 &mdash; ESPnet 202304 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>ESPnet2 &mdash; ESPnet 202308 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Change the configuration for training" href="espnet2_training_option.html" />
-    <link rel="prev" title="Docker" href="docker.html" /> 
+    <link rel="prev" title="Usage" href="espnet1_tutorial.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,7 +36,7 @@
             ESPnet
           </a>
               <div class="version">
-                202304
+                202308
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -49,10 +49,14 @@
               <p><span class="caption-text">Tutorial:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Common usages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallelization.html">Using job scheduling system</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+</ul>
+<p><span class="caption-text">ESPnet1:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="espnet1_tutorial.html">Usage</a></li>
 </ul>
 <p><span class="caption-text">ESPnet2:</span></p>
 <ul class="current">
@@ -77,7 +81,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#use-specified-experiment-directory-for-evaluation">Use specified experiment directory for evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#evaluation-without-training-using-pretrained-model">Evaluation without training using pretrained model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation-without-training-using-pretrained-model">Evaluation without training using pretrained model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation-using-openai-whisper">Evaluation using OpenAI Whisper</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#packing-and-sharing-your-trained-model">Packing and sharing your trained model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage-of-self-supervised-learning-representations-as-feature">Usage of Self-Supervised Learning Representations as feature</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prerequisite">Prerequisite</a></li>
@@ -172,48 +179,51 @@
 </ul>
 <p><span class="caption-text">Package Reference:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.distributed.html">espnet.distributed package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_gen/espnet.asr.html">espnet.asr package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.st.html">espnet.st package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.nets.html">espnet.nets package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.utils.html">espnet.utils package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.transform.html">espnet.transform package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.vc.html">espnet.vc package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.bin.html">espnet.bin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_gen/espnet.mt.html">espnet.mt package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.nets.html">espnet.nets package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.transform.html">espnet.transform package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.bin.html">espnet.bin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.st.html">espnet.st package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.lm.html">espnet.lm package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_gen/espnet.tts.html">espnet.tts package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_gen/espnet.optimizer.html">espnet.optimizer package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.lm.html">espnet.lm package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.vc.html">espnet.vc package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_gen/espnet.scheduler.html">espnet.scheduler package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.layers.html">espnet2.layers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.utils.html">espnet.utils package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet.distributed.html">espnet.distributed package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.asr.html">espnet2.asr package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.svs.html">espnet2.svs package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.fileio.html">espnet2.fileio package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.optimizers.html">espnet2.optimizers package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.gan_svs.html">espnet2.gan_svs package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.asr_transducer.html">espnet2.asr_transducer package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.hubert.html">espnet2.hubert package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.train.html">espnet2.train package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.st.html">espnet2.st package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.uasr.html">espnet2.uasr package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.samplers.html">espnet2.samplers package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.utils.html">espnet2.utils package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.iterators.html">espnet2.iterators package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.text.html">espnet2.text package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.tasks.html">espnet2.tasks package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.bin.html">espnet2.bin package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.mt.html">espnet2.mt package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.gan_tts.html">espnet2.gan_tts package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.tts.html">espnet2.tts package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.enh.html">espnet2.enh package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.slu.html">espnet2.slu package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.torch_utils.html">espnet2.torch_utils package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.schedulers.html">espnet2.schedulers package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.fst.html">espnet2.fst package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.asvspoof.html">espnet2.asvspoof package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.diar.html">espnet2.diar package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.lm.html">espnet2.lm package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.main_funcs.html">espnet2.main_funcs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.tasks.html">espnet2.tasks package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.diar.html">espnet2.diar package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.svs.html">espnet2.svs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.bin.html">espnet2.bin package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.st.html">espnet2.st package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.layers.html">espnet2.layers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.enh.html">espnet2.enh package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.asr_transducer.html">espnet2.asr_transducer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.uasr.html">espnet2.uasr package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.fileio.html">espnet2.fileio package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.s2st.html">espnet2.s2st package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.samplers.html">espnet2.samplers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.lm.html">espnet2.lm package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.tts.html">espnet2.tts package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.asvspoof.html">espnet2.asvspoof package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.s2t.html">espnet2.s2t package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.torch_utils.html">espnet2.torch_utils package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.slu.html">espnet2.slu package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.train.html">espnet2.train package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.spk.html">espnet2.spk package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.optimizers.html">espnet2.optimizers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.utils.html">espnet2.utils package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.fst.html">espnet2.fst package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.text.html">espnet2.text package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.gan_svs.html">espnet2.gan_svs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.schedulers.html">espnet2.schedulers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.hubert.html">espnet2.hubert package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.iterators.html">espnet2.iterators package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_gen/espnet2.gan_tts.html">espnet2.gan_tts package</a></li>
 </ul>
 <p><span class="caption-text">Tool Reference:</span></p>
 <ul>
@@ -494,6 +504,45 @@ You can overwrite it by <code class="docutils literal notranslate"><span class="
 </div>
 <p>You need to fill <code class="docutils literal notranslate"><span class="pre">model_name</span></code> by yourself. You can search for pretrained models on Hugging Face using the tag <a class="reference external" href="https://huggingface.co/models?library=espnet">espnet</a></p>
 <p>(Deprecated: See the following link about our pretrain models: https://github.com/espnet/espnet_model_zoo)</p>
+<section id="evaluation-using-openai-whisper">
+<h3>Evaluation using OpenAI Whisper<a class="headerlink" href="#evaluation-using-openai-whisper" title="Permalink to this headline">¶</a></h3>
+<p>ESPnet2 provides a <a class="reference external" href="../egs2/TEMPLATE/asr1/scripts/utils/evaluate_asr.sh">script</a> to run inference and scoring using OpenAI’s Whisper. This can be used to evaluate speech generation models. Here is an example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1"># Set bash to &#39;debug&#39; mode, it will exit on :</span>
+<span class="c1"># -e &#39;error&#39;, -u &#39;undefined variable&#39;, -o ... &#39;error in pipeline&#39;, -x &#39;print commands&#39;,</span>
+<span class="nb">set</span><span class="w"> </span>-e
+<span class="nb">set</span><span class="w"> </span>-u
+<span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>pipefail
+
+<span class="nv">whisper_tag</span><span class="o">=</span>medium<span class="w">    </span><span class="c1"># whisper model tag, e.g., small, medium, large, etc</span>
+<span class="nv">cleaner</span><span class="o">=</span>whisper_en
+<span class="nv">hyp_cleaner</span><span class="o">=</span>whisper_en
+<span class="nv">nj</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">test_sets</span><span class="o">=</span><span class="s2">&quot;test/WSJ/test_eval92&quot;</span>
+<span class="c1"># decode_options is used in Whisper model&#39;s transcribe method</span>
+<span class="nv">decode_options</span><span class="o">=</span><span class="s2">&quot;{language: en, task: transcribe, temperature: 0, beam_size: 10, fp16: False}&quot;</span>
+
+<span class="k">for</span><span class="w"> </span>x<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">test_sets</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">wavscp</span><span class="o">=</span>dump/raw/<span class="si">${</span><span class="nv">x</span><span class="si">}</span>/wav.scp<span class="w">    </span><span class="c1"># path to wav.scp</span>
+<span class="w">    </span><span class="nv">outdir</span><span class="o">=</span>whisper-<span class="si">${</span><span class="nv">whisper_tag</span><span class="si">}</span>_outputs/<span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="w">  </span><span class="c1"># path to save output</span>
+<span class="w">    </span><span class="nv">gt_text</span><span class="o">=</span>dump/raw/<span class="si">${</span><span class="nv">x</span><span class="si">}</span>/text<span class="w">      </span><span class="c1"># path to groundtruth text file (for scoring only)</span>
+
+<span class="w">    </span>scripts/utils/evaluate_asr.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--whisper_tag<span class="w"> </span><span class="si">${</span><span class="nv">whisper_tag</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--nj<span class="w"> </span><span class="si">${</span><span class="nv">nj</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--gpu_inference<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--stage<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--stop_stage<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--cleaner<span class="w"> </span><span class="si">${</span><span class="nv">cleaner</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--hyp_cleaner<span class="w"> </span><span class="si">${</span><span class="nv">hyp_cleaner</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--decode_options<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">decode_options</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--gt_text<span class="w"> </span><span class="si">${</span><span class="nv">gt_text</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="si">${</span><span class="nv">wavscp</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="si">${</span><span class="nv">outdir</span><span class="si">}</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="packing-and-sharing-your-trained-model">
 <h2>Packing and sharing your trained model<a class="headerlink" href="#packing-and-sharing-your-trained-model" title="Permalink to this headline">¶</a></h2>
@@ -986,7 +1035,7 @@ num_left_chunks: The number of left chunks the attention module can see during t
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="docker.html" class="btn btn-neutral float-left" title="Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="espnet1_tutorial.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="espnet2_training_option.html" class="btn btn-neutral float-right" title="Change the configuration for training" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
