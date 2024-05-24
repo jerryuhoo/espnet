@@ -4,6 +4,17 @@ espnet2.s2st package
 
 
 
+.. _espnet2.s2st.espnet_model:
+
+espnet2.s2st.espnet_model
+-------------------------
+
+.. automodule:: espnet2.s2st.espnet_model
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
 .. _espnet2.s2st.__init__:
 
 espnet2.s2st.__init__
@@ -15,12 +26,34 @@ espnet2.s2st.__init__
     :show-inheritance:
 
 
-.. _espnet2.s2st.espnet_model:
+.. _espnet2.s2st.aux_attention.__init__:
 
-espnet2.s2st.espnet_model
--------------------------
+espnet2.s2st.aux_attention.__init__
+-----------------------------------
 
-.. automodule:: espnet2.s2st.espnet_model
+.. automodule:: espnet2.s2st.aux_attention.__init__
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. _espnet2.s2st.aux_attention.multihead:
+
+espnet2.s2st.aux_attention.multihead
+------------------------------------
+
+.. automodule:: espnet2.s2st.aux_attention.multihead
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. _espnet2.s2st.aux_attention.abs_aux_attention:
+
+espnet2.s2st.aux_attention.abs_aux_attention
+--------------------------------------------
+
+.. automodule:: espnet2.s2st.aux_attention.abs_aux_attention
     :members:
     :undoc-members:
     :show-inheritance:
@@ -48,23 +81,23 @@ espnet2.s2st.losses.tacotron_loss
     :show-inheritance:
 
 
-.. _espnet2.s2st.losses.abs_loss:
-
-espnet2.s2st.losses.abs_loss
-----------------------------
-
-.. automodule:: espnet2.s2st.losses.abs_loss
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 .. _espnet2.s2st.losses.__init__:
 
 espnet2.s2st.losses.__init__
 ----------------------------
 
 .. automodule:: espnet2.s2st.losses.__init__
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. _espnet2.s2st.losses.abs_loss:
+
+espnet2.s2st.losses.abs_loss
+----------------------------
+
+.. automodule:: espnet2.s2st.losses.abs_loss
     :members:
     :undoc-members:
     :show-inheritance:
@@ -92,45 +125,12 @@ espnet2.s2st.losses.attention_loss
     :show-inheritance:
 
 
-.. _espnet2.s2st.aux_attention.multihead:
+.. _espnet2.s2st.tgt_feats_extract.log_spectrogram:
 
-espnet2.s2st.aux_attention.multihead
-------------------------------------
+espnet2.s2st.tgt_feats_extract.log_spectrogram
+----------------------------------------------
 
-.. automodule:: espnet2.s2st.aux_attention.multihead
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-.. _espnet2.s2st.aux_attention.__init__:
-
-espnet2.s2st.aux_attention.__init__
------------------------------------
-
-.. automodule:: espnet2.s2st.aux_attention.__init__
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-.. _espnet2.s2st.aux_attention.abs_aux_attention:
-
-espnet2.s2st.aux_attention.abs_aux_attention
---------------------------------------------
-
-.. automodule:: espnet2.s2st.aux_attention.abs_aux_attention
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-.. _espnet2.s2st.tgt_feats_extract.abs_tgt_feats_extract:
-
-espnet2.s2st.tgt_feats_extract.abs_tgt_feats_extract
-----------------------------------------------------
-
-.. automodule:: espnet2.s2st.tgt_feats_extract.abs_tgt_feats_extract
+.. automodule:: espnet2.s2st.tgt_feats_extract.log_spectrogram
     :members:
     :undoc-members:
     :show-inheritance:
@@ -147,28 +147,6 @@ espnet2.s2st.tgt_feats_extract.__init__
     :show-inheritance:
 
 
-.. _espnet2.s2st.tgt_feats_extract.linear_spectrogram:
-
-espnet2.s2st.tgt_feats_extract.linear_spectrogram
--------------------------------------------------
-
-.. automodule:: espnet2.s2st.tgt_feats_extract.linear_spectrogram
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-.. _espnet2.s2st.tgt_feats_extract.log_spectrogram:
-
-espnet2.s2st.tgt_feats_extract.log_spectrogram
-----------------------------------------------
-
-.. automodule:: espnet2.s2st.tgt_feats_extract.log_spectrogram
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 .. _espnet2.s2st.tgt_feats_extract.log_mel_fbank:
 
 espnet2.s2st.tgt_feats_extract.log_mel_fbank
@@ -180,12 +158,23 @@ espnet2.s2st.tgt_feats_extract.log_mel_fbank
     :show-inheritance:
 
 
-.. _espnet2.s2st.synthesizer.translatotron:
+.. _espnet2.s2st.tgt_feats_extract.abs_tgt_feats_extract:
 
-espnet2.s2st.synthesizer.translatotron
---------------------------------------
+espnet2.s2st.tgt_feats_extract.abs_tgt_feats_extract
+----------------------------------------------------
 
-.. automodule:: espnet2.s2st.synthesizer.translatotron
+.. automodule:: espnet2.s2st.tgt_feats_extract.abs_tgt_feats_extract
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. _espnet2.s2st.tgt_feats_extract.linear_spectrogram:
+
+espnet2.s2st.tgt_feats_extract.linear_spectrogram
+-------------------------------------------------
+
+.. automodule:: espnet2.s2st.tgt_feats_extract.linear_spectrogram
     :members:
     :undoc-members:
     :show-inheritance:
@@ -197,6 +186,17 @@ espnet2.s2st.synthesizer.__init__
 ---------------------------------
 
 .. automodule:: espnet2.s2st.synthesizer.__init__
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+.. _espnet2.s2st.synthesizer.translatotron:
+
+espnet2.s2st.synthesizer.translatotron
+--------------------------------------
+
+.. automodule:: espnet2.s2st.synthesizer.translatotron
     :members:
     :undoc-members:
     :show-inheritance:
